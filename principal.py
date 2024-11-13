@@ -284,7 +284,7 @@ class Ghost:
 
     def move_clyde(self):
         # r, l, u, d
-        # clyde is going to turn whenever advantageous for pursuit
+        # Clyde vai virar sempre que for vantajoso para a perseguição
         if self.direction == 0:
             if self.target[0] > self.x_pos and self.turns[0]:
                 self.x_pos += self.speed
@@ -423,7 +423,7 @@ class Ghost:
 
     def move_blinky(self):
         # r, l, u, d
-        # blinky is going to turn whenever colliding with walls, otherwise continue straight
+        # Blinky vai virar sempre que colidir com paredes, caso contrário continue em frente
         if self.direction == 0:
             if self.target[0] > self.x_pos and self.turns[0]:
                 self.x_pos += self.speed
@@ -529,7 +529,7 @@ class Ghost:
 
     def move_inky(self):
         # r, l, u, d
-        # inky turns up or down at any point to pursue, but left and right only on collision
+        # Inky vira para cima ou para baixo em qualquer ponto para perseguir, mas para a esquerda e para a direita apenas na colisão
         if self.direction == 0:
             if self.target[0] > self.x_pos and self.turns[0]:
                 self.x_pos += self.speed
@@ -651,7 +651,7 @@ class Ghost:
 
     def move_pinky(self):
         # r, l, u, d
-        # inky is going to turn left or right whenever advantageous, but only up or down on collision
+        # Inky vai virar para a esquerda ou para a direita sempre que for vantajoso, mas apenas para cima ou para baixo em caso de colisão
         if self.direction == 0:
             if self.target[0] > self.x_pos and self.turns[0]:
                 self.x_pos += self.speed
@@ -860,7 +860,7 @@ def check_position(centerx, centery):
     num1 = (HEIGHT - 50) // 32
     num2 = (WIDTH // 30)
     num3 = 15
-    # check collisions based on center x and center y of player +/- fudge number
+    # verifique as colisões com base no centro x e centro y do jogador +/- número de correção
     if centerx // 30 < 29:
         if direction == 0:
             if level[centery // num1][(centerx - num3) // num2] < 3:
@@ -1078,7 +1078,7 @@ while run:
             inky_x, inky_y, inky_direction = inky.move_clyde()
         clyde_x, clyde_y, clyde_direction = clyde.move_clyde()
     score, powerup, power_counter, eaten_ghost = check_collisions(score, powerup, power_counter, eaten_ghost)
-    # add to if not powerup to check if eaten ghosts
+    # adicione se não for powerup para verificar se fantasmas foram comidos
     if not powerup:
         if (player_circle.colliderect(blinky.rect) and not blinky.dead) or \
                 (player_circle.colliderect(inky.rect) and not inky.dead) or \
@@ -1334,6 +1334,3 @@ while run:
 
     pygame.display.flip()
 pygame.quit()
-
-
-# sound effects, restart and winning messages
